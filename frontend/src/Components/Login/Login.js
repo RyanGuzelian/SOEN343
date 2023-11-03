@@ -6,7 +6,7 @@ function Login(props) {
         username: '',
         password: ''
     })
-    //updates credentials when an user types in one of the input fields
+    //updates credentials when a user types in one of the input fields
     const handleChange = (event) => {
         const {name, value} = event.target;
         setCredentials({
@@ -45,7 +45,7 @@ function Login(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Login</button>
             </form>
         </div>
 
