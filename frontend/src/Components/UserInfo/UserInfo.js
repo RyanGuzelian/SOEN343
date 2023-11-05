@@ -52,6 +52,7 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
                         onChange={handleChange}
                     />
                 </div>
+
                 <div>
                     <label htmlFor="city">City</label>
                     <input
