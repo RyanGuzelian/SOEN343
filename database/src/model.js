@@ -22,6 +22,21 @@ const deliverySchema = new mongoose.Schema({
         postalCode: String,
         phoneNumber: String,
         email: String
+    },
+    packageInfo: {
+        height: String,
+        width: String,
+        length: String,
+        weight: String
+    },
+    paymentInfo: {
+
+    },
+    orderInfo: {
+        orderId: String
+    },
+    trackingInfo: {
+        tracking: String
     }
 });
 
