@@ -1,9 +1,34 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import data from "bootstrap/js/src/dom/data";
 
 function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
+    const [countriesAndProvinces, setCountriesAndProvinces] = useState({})
+    useEffect(() => {
+        getCountriesAndProvinces().then(
+            data => {
+                setCountriesAndProvinces(data)
+            }
+        )
+    }, []);
+
     const handleChange = (event) => {
         const {name, value} = event.target;
         setUserInfo({[name]: value});
+
+        if (name === 'country') {
+            setUserInfo(prevInfo => (
+                {
+                    ...prevInfo,
+                    [name]:value
+                }
+            ))
+        }
+        else {
+            setUserInfo(prevInfo => ({
+                ...prevInfo,
+                [name]: value
+            }))
+        }
     };
 
     return (
@@ -37,8 +62,11 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
                         onChange={handleChange}
                     >
                         <option value="">Select a country</option>
-                        <option value="USA">United States of America</option>
-                        <option value="CAN">Canada</option>
+                        {Object.keys(countriesAndProvinces).map(countryCode => (
+                            <option key={countryCode} value={countryCode}>
+                                {countryCode}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
@@ -69,9 +97,14 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
                         value={setUserInfo.province}
                         onChange={handleChange}
                     >
-                        <option value="">Select Province</option>
-                        <option value="QC">QC</option>
-                        <option value="ON">ON</option>
+                       <option value="">Select province</option>
+                        {userInfo.country && countriesAndProvinces[userInfo.country].map(
+                            province => (
+                                <option key={province} value={province}>
+                                    {province}
+                                </option>
+                            )
+                        )}
                     </select>
 
                     <label htmlFor="postalCode">Postal code</label>
@@ -106,6 +139,20 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
             </form>
         </div>
     );
+}
+
+const getCountriesAndProvinces = async () => {
+    try {
+        const response = await fetch('http://localhost:3001/countries-provinces')
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json()
+        return data
+    }
+    catch (error) {
+        console.error("Failed to fetch countries and provinces:", error);
+    }
 }
 
 export default UserInfo;
