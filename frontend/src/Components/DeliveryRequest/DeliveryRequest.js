@@ -8,14 +8,23 @@ function DeliveryRequest(props) {
         senderInfo: {
             firstName: '',
             lastName: '',
+            country:'',
             address: '',
-            postalCode: ''
+            city:'',
+            province:'',
+            postalCode: '',
+            phoneNumber:'',
+            email:''
         },
         recipientInfo: {
             firstName: '',
             lastName: '',
+            country:'',
             address: '',
-            postalCode: ''
+            city:'',
+            postalCode: '',
+            phoneNumber:'',
+            email:''
         }
     });
 
