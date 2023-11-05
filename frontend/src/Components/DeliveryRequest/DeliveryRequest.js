@@ -42,7 +42,7 @@ function DeliveryRequest(props) {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (step === 1) {
             console.log(deliveryInfo)
@@ -50,7 +50,15 @@ function DeliveryRequest(props) {
         } else if (step === 2) {
             // Submit your form or navigate to summary page
             console.log(deliveryInfo);
-            navigate('/summary');
+            try {
+                const result = await submitDeliveryData(deliveryInfo)
+                console.log(result.message)
+                navigate('/summary');
+            }
+            catch (error) {
+                console.error("Failed to submit delivery data:", error);
+            }
+
         }
     };
 
@@ -64,6 +72,21 @@ function DeliveryRequest(props) {
             />
         </div>
     );
+}
+
+const submitDeliveryData = async (deliveryData) => {
+    const response = await fetch('http://localhost:3001/submit-delivery',{
+        method:'POST',
+        headers: {
+            'Content-Type':'application/json',
+        },
+        body:JSON.stringify(deliveryData)
+    })
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
 }
 
 export default DeliveryRequest;
