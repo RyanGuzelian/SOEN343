@@ -1,3 +1,4 @@
+const {getCountriesAndProvinces} = require('./src/UserInfo')
 const express = require('express')
 const cors = require('cors')
 
@@ -15,6 +16,11 @@ app.post('/submit-delivery', (req,res) => {
 
     deliveries.push(deliveryData)
     res.status(201).send({message:"Delivery data submitted successfully"})
+})
+
+app.get('/countries-provinces',(req,res)=> {
+    const data = getCountriesAndProvinces()
+    res.status(200).send(data)
 })
 
 app.listen(port,() => {
