@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import UserInfo from "../UserInfo/UserInfo";
 import PackageInfo from "../Package/PackageInfo";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const Steps = {
     SenderInfo: 1,
@@ -94,6 +96,7 @@ function DeliveryRequest(props) {
 
     return (
         <div className="delivery-request-container">
+            <Header/>
             {step === Steps.SenderInfo && (
                 <UserInfo
                     userInfo={deliveryInfo.senderInfo}
@@ -118,6 +121,7 @@ function DeliveryRequest(props) {
                     title="Package Information"
                 />
             )}
+            <Footer/>
         </div>
     );
 

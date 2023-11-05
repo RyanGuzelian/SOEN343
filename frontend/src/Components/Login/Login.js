@@ -1,5 +1,7 @@
 import './Login.css'
 import React, {useState} from 'react'
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function Login(props) {
     const [credentials, setCredentials] = useState({
@@ -24,6 +26,7 @@ function Login(props) {
     //rendering form
     return (
         <div className="login-container">
+            <Header/>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -47,6 +50,7 @@ function Login(props) {
                 </div>
                 <button type="submit">Login</button>
             </form>
+            <Footer/>
         </div>
 
     )
