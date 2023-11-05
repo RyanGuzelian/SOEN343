@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import data from "bootstrap/js/src/dom/data";
 
 function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
     const [countriesAndProvinces, setCountriesAndProvinces] = useState({})

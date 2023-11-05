@@ -7,15 +7,11 @@ const cors = require('cors')
 const app = express()
 const port = 3001
 
-let deliveries = []
 connectToDatabase()
 app.use(cors())
 app.use(express.json())
 app.post('/submit-delivery', (req,res) => {
-    //const deliveryData = req.body
     const deliveryData = new Delivery(req.body)
-    //console.log('Received delivery data:', deliveryData)
-    //deliveries.push(deliveryData)
     deliveryData.save()
         .then(() => res.status(201).send({ message: "Delivery data submitted successfully" }))
         .catch(err => {
@@ -23,6 +19,17 @@ app.post('/submit-delivery', (req,res) => {
             res.status(500).send({ message: "Error saving delivery data" });
         });
 })
+
+app.post('/quotation-service', (req, res) => {
+    const deliveryData = req.body;
+    console.log("Received request for quotation service");
+    res.status(200).json({ message: "Message received successfully" });
+    //quotation service here to calculate the price
+});
+
+app.get('/quotation-service', (req, res) => {
+   //will send quotation to the /quotation-service
+});
 
 app.get('/countries-provinces',(req,res)=> {
     const data = getCountriesAndProvinces()
