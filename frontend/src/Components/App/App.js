@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "../Login/Login";
 import DeliveryRequest from "../DeliveryRequest/DeliveryRequest";
+import Home from "../Home/Home";
 
 function App() {
     return (
@@ -24,10 +25,11 @@ function App() {
                     {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
                     <Route path="*" element={
                         <header className="App-header">
-                            Delivery App
+                                <Home/>
                         </header>
                     } />
                 </Routes>
+
             </div>
         </Router>
     );

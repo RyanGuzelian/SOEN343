@@ -2,12 +2,14 @@ import './Login.css'
 import React, {useState} from 'react'
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import {useNavigate} from "react-router-dom";
 
 function Login(props) {
     const [credentials, setCredentials] = useState({
         username: '',
         password: ''
     })
+    const navigate = useNavigate();
     //updates credentials when a user types in one of the input fields
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -19,7 +21,8 @@ function Login(props) {
     //submit the form
     const handleSubmit = (event) => {
         event.preventDefault()
-        // back end login logic
+        // back end login logic to check valid user
+        navigate('/home')
         console.log(credentials)
     }
 
