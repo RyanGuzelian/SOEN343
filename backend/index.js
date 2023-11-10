@@ -1,4 +1,5 @@
 const {getCountriesAndProvinces} = require('./src/UserInfo')
+const {calculatePriceForDimension} = require('./src/QuotationService')
 const Delivery = require('../database/src/model');
 const connectToDatabase = require('../database/src/connect');
 const express = require('express')
@@ -6,6 +7,7 @@ const cors = require('cors')
 
 const app = express()
 const port = 3001
+const quotation = 0
 
 connectToDatabase()
 app.use(cors())
@@ -21,10 +23,11 @@ app.post('/submit-delivery', (req,res) => {
 })
 
 app.post('/quotation-service', (req, res) => {
-    const deliveryData = req.body;
+    const { packageInfo } = req.body;
     console.log("Received request for quotation service");
+    console.log(packageInfo)
+    calculatePriceForDimension({packageInfo})
     res.status(200).json({ message: "Message received successfully" });
-    //quotation service here to calculate the price
 });
 
 app.get('/quotation-service', (req, res) => {
