@@ -12,10 +12,10 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="warning">
         <Toolbar>
-          <Button color="inherit" to="/track">Track</Button>
-          <Button color="inherit" to="/ship">Ship</Button>
-          <Button color="inherit" to="/quote">Quote</Button>
-          <Button color="inherit" to="/contact">Contact Us</Button>
+          <Button color="inherit" href="/track">Track</Button>
+          <Button color="inherit" href="/ship">Ship</Button>
+          <Button color="inherit" href="/quote">Quote</Button>
+          <Button color="inherit" href="/contact">Contact Us</Button>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'right' }}>
             Delivery Co.

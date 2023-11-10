@@ -2,25 +2,40 @@ import logo from './logo.svg';
 import './App.css';
 import './Components/Navbar'
 import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./Components/Login/Login.js";
+import DeliveryRequest from "./Components/DeliveryRequest/DeliveryRequest";
+import Home from "./Components/Home/Home";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+            <div className="App">
+                <Routes> {/* Use Routes instead of Switch */}
+                    <Route path="/login" element={
+                        <header className="App-header">
+                            <Login/>
+                        </header>
+                    } />
+
+                    <Route path="/delivery-request" element={
+                        <header className="App-header">
+                            <DeliveryRequest/>
+                        </header>
+                    } />
+
+                    {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
+                    <Route path="*" element={
+                        <header className="App-header">
+                                <Home/>
+                        </header>
+                    } />
+                </Routes>
+
+            </div>
+        </Router>
     </div>
   );
 }
