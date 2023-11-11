@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { TextField } from "@mui/material";
 
 function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
     const [countriesAndProvinces, setCountriesAndProvinces] = useState({})
@@ -35,23 +36,29 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
             <h2>{title}</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="firstName">First name</label>
-                    <input
+                    {/* <label htmlFor="firstName">First name</label> */}
+                    <TextField
                         type="text"
                         id="firstName"
                         name="firstName"
                         value={userInfo.firstName}
                         onChange={handleChange}
+                        variant="outlined"
+                        label="First Name"
+                        style={{textAlign:"left"}}
                     />
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
+                    {/* <label htmlFor="lastName">Last Name</label> */}
+                    
+                </div>
+                <TextField
                         type="text"
                         id="lastName"
                         name="lastName"
                         value={userInfo.lastName}
                         onChange={handleChange}
+                        variant="outlined"
+                        label="Last Name"
                     />
-                </div>
                 <div>
                     <label htmlFor="country">Country</label>
                     <select

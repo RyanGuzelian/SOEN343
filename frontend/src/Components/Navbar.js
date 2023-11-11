@@ -10,11 +10,10 @@ import Button from "@mui/material/Button";
 const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="warning">
+      <AppBar position="static" color="info">
         <Toolbar>
           <Button color="inherit" href="/track">Track</Button>
           <Button color="inherit" href="/ship">Ship</Button>
-          <Button color="inherit" href="/quote">Quote</Button>
           <Button color="inherit" href="/contact">Contact Us</Button>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'right' }}>
