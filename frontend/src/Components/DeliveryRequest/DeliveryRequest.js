@@ -48,7 +48,7 @@ function DeliveryRequest(props) {
             orderId:''
         },
         trackingInfo:{
-            tracking:'id'
+            tracking:''
         }
     });
 

@@ -9,7 +9,7 @@ function PackageInfo({packageInfo,setPackageInfo,handleSubmit,title}) {
 
 
     return(
-        <div className="package-info">
+        <div className="package-info-container">
             <h2>{title}</h2>
             <form onSubmit={handleSubmit}>
                 <div>

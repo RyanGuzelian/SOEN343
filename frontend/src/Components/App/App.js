@@ -4,21 +4,37 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "../Login/Login";
 import DeliveryRequest from "../DeliveryRequest/DeliveryRequest";
 import Home from "../Home/Home";
+import Quotation from "../Quotation/Quotation";
+import SenderForm from "../SenderForm/SenderForm";
+import PackageForm from "../PackageForm/PackageForm";
+import ReceiverForm from "../ReceiverForm/ReceiverForm";
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Routes> {/* Use Routes instead of Switch */}
-                    <Route path="/login" element={
+                    <Route path="/sender-info" element={
                         <header className="App-header">
-                            <Login/>
+                            <SenderForm/>
                         </header>
                     } />
 
-                    <Route path="/delivery-request" element={
+                    <Route path="/recipient-info" element={
                         <header className="App-header">
-                            <DeliveryRequest/>
+                            <ReceiverForm/>
+                        </header>
+                    } />
+
+                    <Route path="/package-info" element={
+                        <header className="App-header">
+                            <PackageForm/>
+                        </header>
+                    } />
+
+                    <Route path="/quotation-service" element={
+                        <header className="App-header">
+                            <Quotation/>
                         </header>
                     } />
 

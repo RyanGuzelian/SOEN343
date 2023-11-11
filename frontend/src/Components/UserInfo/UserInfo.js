@@ -57,7 +57,7 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
                     <select
                         id="country"
                         name="country"
-                        value={setUserInfo.country}
+                        value={userInfo.country}
                         onChange={handleChange}
                     >
                         <option value="">Select a country</option>
@@ -93,7 +93,7 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
                     <select
                         id="province"
                         name="province"
-                        value={setUserInfo.province}
+                        value={userInfo.province}
                         onChange={handleChange}
                     >
                        <option value="">Select province</option>
@@ -146,8 +146,7 @@ const getCountriesAndProvinces = async () => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json()
-        return data
+        return await response.json()
     }
     catch (error) {
         console.error("Failed to fetch countries and provinces:", error);

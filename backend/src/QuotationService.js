@@ -14,7 +14,5 @@ module.exports.calculatePriceForDimension = function ({height,width,length,weigh
     const dimensionalSum = numericLength + numericWidth + numericHeight;
 
     // Calculate total price
-    const price = basePrice + (dimensionalSum * sizeFactor) + (numericWeight * weightFactor);
-
-    return price;
+    return basePrice + (dimensionalSum * sizeFactor) + (numericWeight * weightFactor);
 }
