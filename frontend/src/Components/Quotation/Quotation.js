@@ -58,13 +58,15 @@ function QuotationService() {
         event.preventDefault();
         try {
             const result = await sendQuotationInfo(quotation, orderId);
-            console.log(result.message);
-            // If you get an orderId or similar identifier, store it as needed
-            navigate('/payment', {state: {orderId, price: quotation.selectedPrice}});
+            console.log("Quotation Info Submission Result:", result);
+
+            console.log("Navigating to /order with state:", { orderId, price: quotation.selectedPrice });
+            navigate('/order', { state: { orderId, price: quotation.selectedPrice } });
         } catch (error) {
             console.error("Failed to submit quotation info", error);
         }
     };
+
 
     return (
         <div className="quotation-service-container">

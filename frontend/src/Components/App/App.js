@@ -1,4 +1,3 @@
-import logo from '../../logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "../Login/Login";
@@ -8,6 +7,7 @@ import Quotation from "../Quotation/Quotation";
 import SenderForm from "../SenderForm/SenderForm";
 import PackageForm from "../PackageForm/PackageForm";
 import ReceiverForm from "../ReceiverForm/ReceiverForm";
+import Order from "../Order/Order";
 
 function App() {
     return (
@@ -35,6 +35,12 @@ function App() {
                     <Route path="/quotation-service" element={
                         <header className="App-header">
                             <Quotation/>
+                        </header>
+                    } />
+
+                    <Route path="/order" element={
+                        <header className="App-header">
+                            <Order/>
                         </header>
                     } />
 
