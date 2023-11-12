@@ -81,6 +81,28 @@ app.post('/quotation-service', async (req, res) => {
     }
 });
 
+app.post('/quotation-info', async (req, res) => {
+    const { orderId, quotation } = req.body;
+
+    try {
+        // Update only the quotationInfo part of the delivery document
+        const updatedDelivery = await Delivery.findByIdAndUpdate(
+            orderId,
+            { quotationInfo: quotation }, // Update only the quotationInfo field
+            { new: true }
+        );
+
+        if (!updatedDelivery) {
+            return res.status(404).send({ message: "Order not found" });
+        }
+
+        res.status(200).json({ message: "Quotation info updated successfully" });
+    } catch (err) {
+        console.error("Error updating quotation info:", err);
+        res.status(500).send({ message: "Error updating quotation info" });
+    }
+});
+
 
 app.get('/countries-provinces', (req, res) => {
     try {

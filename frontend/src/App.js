@@ -3,8 +3,6 @@ import './App.css';
 import './Components/Navbar'
 import Navbar from './Components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./Components/Login/Login.js";
-import DeliveryRequest from "./Components/DeliveryRequest/DeliveryRequest";
 import Home from "./Components/Home/Home";
 import SenderForm from "./Components/SenderForm/SenderForm";
 import ReceiverForm from "./Components/ReceiverForm/ReceiverForm";

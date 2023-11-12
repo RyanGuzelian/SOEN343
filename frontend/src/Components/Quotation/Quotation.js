@@ -54,9 +54,16 @@ function QuotationService() {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/payment', { state: { orderId, price: quotation.selectedPrice } });
+        try {
+            const result = await sendQuotationInfo(quotation, orderId);
+            console.log(result.message);
+            // If you get an orderId or similar identifier, store it as needed
+            navigate('/payment', {state: {orderId, price: quotation.selectedPrice}});
+        } catch (error) {
+            console.error("Failed to submit quotation info", error);
+        }
     };
 
     return (
@@ -98,6 +105,33 @@ const sendQuotation = async (quotationData, orderId) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ packageInfo, orderId })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error in sending quotation info:", error);
+        throw error;
+    }
+};
+
+const sendQuotationInfo = async (quotation, orderId) => {
+    try {
+        const response = await fetch('http://localhost:3001/quotation-info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                orderId,
+                quotation: {
+                    deliveryType: quotation.selectedType,
+                    price: quotation.selectedPrice.toString() // Convert to string if necessary
+                }
+            })
         });
 
         if (!response.ok) {
