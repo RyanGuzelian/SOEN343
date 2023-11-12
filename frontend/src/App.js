@@ -8,6 +8,9 @@ import SenderForm from "./Components/SenderForm/SenderForm";
 import ReceiverForm from "./Components/ReceiverForm/ReceiverForm";
 import PackageForm from "./Components/PackageForm/PackageForm";
 import Quotation from "./Components/Quotation/Quotation";
+import Footer from "./Components/Footer/Footer";
+import React from "react";
+import Order from "./Components/Order/Order";
 
 function App() {
   return (
@@ -52,6 +55,14 @@ function App() {
                         </header>
                     } />
 
+                    <Route path="/order" element={
+                        <header className="App-header">
+                            <Order/>
+                        </header>
+                    } />
+
+
+
 
 
                     {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
@@ -64,6 +75,7 @@ function App() {
 
             </div>
         </Router>
+        <Footer/>
     </div>
   );
 }

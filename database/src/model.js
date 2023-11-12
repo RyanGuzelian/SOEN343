@@ -44,7 +44,8 @@ const deliverySchema = new mongoose.Schema({
     },
 
     trackingInfo: {
-        tracking: String
+        tracking: String,
+        state: String
     }
 });
 
