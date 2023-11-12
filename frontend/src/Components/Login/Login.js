@@ -1,6 +1,5 @@
 import './Login.css'
 import React, {useState} from 'react'
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import {useNavigate} from "react-router-dom";
 
@@ -29,7 +28,6 @@ function Login(props) {
     //rendering form
     return (
         <div className="login-container">
-            <Header/>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
