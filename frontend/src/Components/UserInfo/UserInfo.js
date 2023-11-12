@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { TextField } from "@mui/material";
 
 function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
     const [countriesAndProvinces, setCountriesAndProvinces] = useState({})
@@ -35,29 +36,35 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
             <h2>{title}</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="firstName">First name</label>
-                    <input
+                    {/* <label htmlFor="firstName">First name</label> */}
+                    <TextField
                         type="text"
                         id="firstName"
                         name="firstName"
                         value={userInfo.firstName}
                         onChange={handleChange}
+                        variant="outlined"
+                        label="First Name"
+                        style={{textAlign:"left"}}
                     />
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
+                    {/* <label htmlFor="lastName">Last Name</label> */}
+                    
+                </div>
+                <TextField
                         type="text"
                         id="lastName"
                         name="lastName"
                         value={userInfo.lastName}
                         onChange={handleChange}
+                        variant="outlined"
+                        label="Last Name"
                     />
-                </div>
                 <div>
                     <label htmlFor="country">Country</label>
                     <select
                         id="country"
                         name="country"
-                        value={setUserInfo.country}
+                        value={userInfo.country}
                         onChange={handleChange}
                     >
                         <option value="">Select a country</option>
@@ -93,7 +100,7 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
                     <select
                         id="province"
                         name="province"
-                        value={setUserInfo.province}
+                        value={userInfo.province}
                         onChange={handleChange}
                     >
                        <option value="">Select province</option>
@@ -146,8 +153,7 @@ const getCountriesAndProvinces = async () => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json()
-        return data
+        return await response.json()
     }
     catch (error) {
         console.error("Failed to fetch countries and provinces:", error);

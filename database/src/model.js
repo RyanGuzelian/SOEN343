@@ -29,12 +29,20 @@ const deliverySchema = new mongoose.Schema({
         length: String,
         weight: String
     },
+
+    quotationInfo: {
+        deliveryType: String,
+        price: String
+    },
+
     paymentInfo: {
 
     },
+
     orderInfo: {
         orderId: String
     },
+
     trackingInfo: {
         tracking: String
     }

@@ -1,19 +1,33 @@
-import logo from '../../logo.svg';
+import logo from './logo.svg';
 import './App.css';
+import './Components/Navbar'
+import Navbar from './Components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "../Login/Login";
-import DeliveryRequest from "../DeliveryRequest/DeliveryRequest";
-import Home from "../Home/Home";
-import Quotation from "../Quotation/Quotation";
-import SenderForm from "../SenderForm/SenderForm";
-import PackageForm from "../PackageForm/PackageForm";
-import ReceiverForm from "../ReceiverForm/ReceiverForm";
+import Home from "./Components/Home/Home";
+import SenderForm from "./Components/SenderForm/SenderForm";
+import ReceiverForm from "./Components/ReceiverForm/ReceiverForm";
+import PackageForm from "./Components/PackageForm/PackageForm";
+import Quotation from "./Components/Quotation/Quotation";
 
 function App() {
-    return (
-        <Router>
+  return (
+    <div className="App">
+      <Navbar />
+      <Router>
             <div className="App">
                 <Routes> {/* Use Routes instead of Switch */}
+                    {/* <Route path="/track" element={
+                        <header className="App-header">
+                            <Login/>
+                        </header>
+                    } /> */}
+
+                    <Route path="/ship" element={
+                        <header className="App-header">
+                            <SenderForm/>
+                        </header>
+                    } />
+
                     <Route path="/sender-info" element={
                         <header className="App-header">
                             <SenderForm/>
@@ -38,6 +52,8 @@ function App() {
                         </header>
                     } />
 
+
+
                     {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
                     <Route path="*" element={
                         <header className="App-header">
@@ -48,7 +64,8 @@ function App() {
 
             </div>
         </Router>
-    );
+    </div>
+  );
 }
 
 export default App;
