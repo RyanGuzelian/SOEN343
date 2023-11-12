@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./Components/Login/Login.js";
 import DeliveryRequest from "./Components/DeliveryRequest/DeliveryRequest";
 import Home from "./Components/Home/Home";
+import SenderForm from "./Components/SenderForm/SenderForm";
+import ReceiverForm from "./Components/ReceiverForm/ReceiverForm";
+import PackageForm from "./Components/PackageForm/PackageForm";
+import Quotation from "./Components/Quotation/Quotation";
 
 function App() {
   return (
@@ -22,9 +26,35 @@ function App() {
 
                     <Route path="/ship" element={
                         <header className="App-header">
-                            <DeliveryRequest/>
+                            <SenderForm/>
                         </header>
                     } />
+
+                    <Route path="/sender-info" element={
+                        <header className="App-header">
+                            <SenderForm/>
+                        </header>
+                    } />
+
+                    <Route path="/recipient-info" element={
+                        <header className="App-header">
+                            <ReceiverForm/>
+                        </header>
+                    } />
+
+                    <Route path="/package-info" element={
+                        <header className="App-header">
+                            <PackageForm/>
+                        </header>
+                    } />
+
+                    <Route path="/quotation-service" element={
+                        <header className="App-header">
+                            <Quotation/>
+                        </header>
+                    } />
+
+
 
                     {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
                     <Route path="*" element={
