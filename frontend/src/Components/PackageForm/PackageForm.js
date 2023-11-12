@@ -22,7 +22,10 @@ function PackageForm() {
         try {
             const result = await sendPackageInfo(packageInfo,orderId)
             console.log(result.message)
-            navigate('/quotation-service', { state: { orderId: orderId } })
+            navigate('/quotation-service', { state: {
+                    orderId: orderId,
+                    packageInfo: packageInfo
+                }})
         }
         catch (error) {
             console.error("Failed to submit package info", error)

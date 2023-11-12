@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const Delivery = require('../database/src/model'); // Ensure this path is correct
 const connectToDatabase = require('../database/src/connect'); // Ensure this function correctly establishes a DB connection
-const { getCountriesAndProvinces } = require('./src/UserInfo'); // Ensure this function is implemented correctly
+const { getCountriesAndProvinces } = require('./src/UserInfo');
+const {getQuotation} = require("./src/QuotationService"); // Ensure this function is implemented correctly
 
 const app = express();
 const port = 3001;
@@ -61,13 +62,25 @@ app.post('/package-info', async (req, res) => {
 });
 
 
-app.post('/quotation-service', (req, res) => {
-    const { packageInfo } = req.body; // Ensure this is the structure sent from the frontend
-    console.log("Received request for quotation service:", packageInfo);
-    // Here, you would presumably calculate the quotation based on packageInfo
-    // For now, just returning a success message
-    res.status(200).json({ message: "Quotation calculated successfully" });
+app.post('/quotation-service', async (req, res) => {
+    try {
+        const { height, width, length, weight } = req.body.packageInfo;
+        console.log(height)
+        console.log(weight)
+        const regularPrice = getQuotation({ height, width, length, weight}, "regular");
+        const expressPrice = getQuotation({ height, width, length, weight}, "express");
+        if (!req.body.packageInfo) {
+            return res.status(400).send({ message: "Missing package information" });
+        }
+
+        res.status(200).json({ regularPrice, expressPrice });
+    } catch (err) {
+
+        console.error("Error calculating quotation:", err);
+        res.status(500).send({ message: "Error calculating quotation" });
+    }
 });
+
 
 app.get('/countries-provinces', (req, res) => {
     try {

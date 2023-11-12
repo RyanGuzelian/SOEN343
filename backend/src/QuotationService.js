@@ -1,18 +1,29 @@
-module.exports.calculatePriceForDimension = function ({height,width,length,weight}) {
-    // Convert string inputs to numbers
+module.exports.getQuotation = function ({height, width, length, weight}, deliveryType) {
     const numericLength = parseFloat(length);
     const numericWidth = parseFloat(width);
     const numericHeight = parseFloat(height);
     const numericWeight = parseFloat(weight);
 
-    // Example pricing strategy: base price + (dimension sum * weight factor)
-    const basePrice = 10; // Base price for handling and processing
-    const sizeFactor = 0.02; // Price per unit of combined dimensions
-    const weightFactor = 0.05; // Price per unit of weight
+    // Basic pricing components
+    const basePrice = 10;
+    const sizeFactor = 0.02;
+    const weightFactor = 0.05;
 
-    // Calculate dimensional sum
+    // Dimensional weight calculation
+    const dimensionalWeight = (numericLength * numericWidth * numericHeight) / 5000; // Dimensional factor could vary
+    const chargeableWeight = Math.max(numericWeight, dimensionalWeight);
+
+    // Calculate dimensional sum and price based on weight
     const dimensionalSum = numericLength + numericWidth + numericHeight;
+    let price = basePrice + (dimensionalSum * sizeFactor) + (chargeableWeight * weightFactor);
 
-    // Calculate total price
-    return basePrice + (dimensionalSum * sizeFactor) + (numericWeight * weightFactor);
+    // Urgency pricing
+    if (deliveryType === "normal") {
+        price += 10; // Normal delivery surcharge
+    } else if (deliveryType === "express") {
+        price += 60; // Express delivery surcharge
+    }
+
+    console.log(price)
+    return price;
 }
