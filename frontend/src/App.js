@@ -11,6 +11,7 @@ import Quotation from "./Components/Quotation/Quotation";
 import Footer from "./Components/Footer/Footer";
 import React from "react";
 import Order from "./Components/Order/Order";
+import Tracking from "./Components/Tracking/Tracking";
 
 function App() {
   return (
@@ -58,6 +59,12 @@ function App() {
                     <Route path="/order" element={
                         <header className="App-header">
                             <Order/>
+                        </header>
+                    } />
+
+                    <Route path="/track" element={
+                        <header className="App-header">
+                            <Tracking/>
                         </header>
                     } />
 

@@ -39,12 +39,12 @@ const deliverySchema = new mongoose.Schema({
 
     },
 
-    orderInfo: {
-        orderId: String
+    deliveryInfo: {
+        date : String,
+        time : String
     },
 
     trackingInfo: {
-        tracking: String,
         state: String
     }
 });

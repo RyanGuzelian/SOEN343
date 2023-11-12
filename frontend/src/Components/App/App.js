@@ -8,6 +8,8 @@ import SenderForm from "../SenderForm/SenderForm";
 import PackageForm from "../PackageForm/PackageForm";
 import ReceiverForm from "../ReceiverForm/ReceiverForm";
 import Order from "../Order/Order";
+import Tracking from "../Tracking/Tracking";
+import React from "react";
 
 function App() {
     return (
@@ -41,6 +43,12 @@ function App() {
                     <Route path="/order" element={
                         <header className="App-header">
                             <Order/>
+                        </header>
+                    } />
+
+                    <Route path="/track" element={
+                        <header className="App-header">
+                            <Tracking/>
                         </header>
                     } />
 
