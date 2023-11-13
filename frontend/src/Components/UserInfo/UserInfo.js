@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { TextField } from "@mui/material";
+import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import Button from "@mui/material/Button";
 
 function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
     const [countriesAndProvinces, setCountriesAndProvinces] = useState({})
@@ -19,11 +20,10 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
             setUserInfo(prevInfo => (
                 {
                     ...prevInfo,
-                    [name]:value
+                    [name]: value
                 }
             ))
-        }
-        else {
+        } else {
             setUserInfo(prevInfo => ({
                 ...prevInfo,
                 [name]: value
@@ -36,112 +36,138 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
             <h2>{title}</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    {/* <label htmlFor="firstName">First name</label> */}
                     <TextField
+                        label="First Name"
                         type="text"
                         id="firstName"
                         name="firstName"
                         value={userInfo.firstName}
                         onChange={handleChange}
                         variant="outlined"
-                        label="First Name"
-                        style={{textAlign:"left"}}
+                        fullWidth
+                        margin="normal"
                     />
-                    {/* <label htmlFor="lastName">Last Name</label> */}
-                    
-                </div>
-                <TextField
+                    <TextField
+                        label="Last Name"
                         type="text"
                         id="lastName"
                         name="lastName"
                         value={userInfo.lastName}
                         onChange={handleChange}
                         variant="outlined"
-                        label="Last Name"
+                        fullWidth
+                        margin="normal"
                     />
+                </div>
                 <div>
-                    <label htmlFor="country">Country</label>
-                    <select
-                        id="country"
-                        name="country"
-                        value={userInfo.country}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select a country</option>
-                        {Object.keys(countriesAndProvinces).map(countryCode => (
-                            <option key={countryCode} value={countryCode}>
-                                {countryCode}
-                            </option>
-                        ))}
-                    </select>
+                    <FormControl fullWidth margin="normal">
+                        <InputLabel id="country-label">Country</InputLabel>
+                        <Select
+                            labelId="country-label"
+                            id="country"
+                            name="country"
+                            value={userInfo.country}
+                            onChange={handleChange}
+                            label="Country"
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            {Object.keys(countriesAndProvinces).map(countryCode => (
+                                <MenuItem key={countryCode} value={countryCode}>
+                                    {countryCode}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                 </div>
 
                 <div>
-                    <label htmlFor="address">Address</label>
-                    <input
+                    <TextField
+                        label="Address"
                         type="text"
                         id="address"
                         name="address"
                         value={userInfo.address}
                         onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
                     />
-                </div>
-                <div>
-                    <label htmlFor="city">City</label>
-                    <input
+                    <TextField
+                        label="City"
                         type="text"
                         id="city"
                         name="city"
                         value={userInfo.city}
                         onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
                     />
-
-                    <label htmlFor="province">Province</label>
-                    <select
-                        id="province"
-                        name="province"
-                        value={userInfo.province}
-                        onChange={handleChange}
-                    >
-                       <option value="">Select province</option>
-                        {userInfo.country && countriesAndProvinces[userInfo.country].map(
-                            province => (
-                                <option key={province} value={province}>
+                </div>
+                <div>
+                    <FormControl fullWidth margin="normal">
+                        <InputLabel id="province-label">Province</InputLabel>
+                        <Select
+                            labelId="province-label"
+                            id="province"
+                            name="province"
+                            value={userInfo.province}
+                            onChange={handleChange}
+                            label="Province"
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            {userInfo.country && countriesAndProvinces[userInfo.country].map(province => (
+                                <MenuItem key={province} value={province}>
                                     {province}
-                                </option>
-                            )
-                        )}
-                    </select>
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
 
-                    <label htmlFor="postalCode">Postal code</label>
-                    <input
+                    <TextField
+                        label="Postal Code"
                         type="text"
                         id="postalCode"
                         name="postalCode"
                         value={userInfo.postalCode}
                         onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
                     />
                 </div>
                 <div>
-                    <label htmlFor="phoneNumber">Phone Number</label>
-                    <input
+                    <TextField
+                        label="Phone Number"
                         type="tel"
                         id="phoneNumber"
                         name="phoneNumber"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         value={userInfo.phoneNumber}
                         onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
                     />
-                    <label htmlFor="email">Email</label>
-                    <input
+                    <TextField
+                        label="Email"
                         type="email"
                         id="email"
                         name="email"
                         value={userInfo.email}
                         onChange={handleChange}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
                     />
                 </div>
-                <button type="submit">Continue</button>
+                <Button variant="contained" color="primary" type="submit" style={{ marginTop: 16 }}>
+                    Continue
+                </Button>
             </form>
         </div>
     );
@@ -154,8 +180,7 @@ const getCountriesAndProvinces = async () => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         return await response.json()
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Failed to fetch countries and provinces:", error);
     }
 }

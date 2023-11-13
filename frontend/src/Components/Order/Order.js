@@ -1,10 +1,17 @@
 // Order.js (React Component)
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {
+    Container,
+    Typography,
+    Paper,
+    Grid,
+    Box
+} from "@mui/material";
+import {useLocation} from 'react-router-dom';
 
 function Order() {
     const location = useLocation();
-    const { orderId } = location.state || {};
+    const {orderId} = location.state || {};
     const [orderDetails, setOrderDetails] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -39,33 +46,55 @@ function Order() {
     }
 
     return (
-        <div className="order-container">
-            <h2>Order Summary</h2>
-            {orderDetails && (
-                <>
-                    <p>Order ID: {orderDetails._id}</p>
-                    <p>Price: ${orderDetails.quotationInfo.price}</p>
-                    <p>Delivery Type: ${orderDetails.quotationInfo.deliveryType}</p>
-                    <h3>Sender Information</h3>
-                    <p>Name: {orderDetails.senderInfo.firstName} {orderDetails.senderInfo.lastName}</p>
-                    <p>Country: {orderDetails.senderInfo.country}</p>
-                    <p>Address: {orderDetails.senderInfo.address} {orderDetails.senderInfo.city},{orderDetails.senderInfo.province} {orderDetails.senderInfo.postalCode} </p>
-                    <p>Email: {orderDetails.senderInfo.email}</p>
-                    <p>PhoneNumber: {orderDetails.senderInfo.phoneNumber}</p>
+        <Container className="order-container">
+            <Box my={4}>
+                <Paper elevation={3} style={{padding: '16px'}}>
+                    <Typography variant="h4" gutterBottom>
+                        Order Summary
+                    </Typography>
 
-                    <h3>Recipient Information</h3>
-                    <p>Name: {orderDetails.recipientInfo.firstName} {orderDetails.recipientInfo.lastName}</p>
-                    <p>Country: {orderDetails.recipientInfo.country}</p>
-                    <p>Address: {orderDetails.recipientInfo.address} {orderDetails.recipientInfo.city},{orderDetails.recipientInfo.province} {orderDetails.recipientInfo.postalCode} </p>
-                    <p>Email: {orderDetails.recipientInfo.email}</p>
-                    <p>PhoneNumber: {orderDetails.recipientInfo.phoneNumber}</p>
+                    {orderDetails && (
+                        <>
+                            <Typography variant="subtitle1">
+                                Order ID: {orderDetails._id}
+                            </Typography>
+                            <Typography variant="subtitle1">
+                                Price: ${orderDetails.quotationInfo.price}
+                            </Typography>
+                            <Typography variant="subtitle1">
+                                Delivery Type: {orderDetails.quotationInfo.deliveryType}
+                            </Typography>
 
-                    <h3>Package Information</h3>
-                    <p>Dimensions: {orderDetails.packageInfo.height} cm x {orderDetails.packageInfo.width} cm x {orderDetails.packageInfo.length} cm</p>
-                    <p>Weight: {orderDetails.packageInfo.weight}</p>
-                </>
-            )}
-        </div>
+                            <Box mt={2}>
+                                <Typography variant="h6">Sender Information</Typography>
+                                <Typography>Name: {orderDetails.senderInfo.firstName} {orderDetails.senderInfo.lastName}</Typography>
+                                <Typography>Country: {orderDetails.senderInfo.country}</Typography>
+                                <Typography>Address: {orderDetails.senderInfo.address}, {orderDetails.senderInfo.city}, {orderDetails.senderInfo.province} {orderDetails.senderInfo.postalCode}</Typography>
+                                <Typography>Email: {orderDetails.senderInfo.email}</Typography>
+                                <Typography>Phone Number: {orderDetails.senderInfo.phoneNumber}</Typography>
+                            </Box>
+
+                            <Box mt={2}>
+                                <Typography variant="h6">Recipient Information</Typography>
+                                <Typography>Name: {orderDetails.recipientInfo.firstName} {orderDetails.recipientInfo.lastName}</Typography>
+                                <Typography>Country: {orderDetails.recipientInfo.country}</Typography>
+                                <Typography>Address: {orderDetails.recipientInfo.address}, {orderDetails.recipientInfo.city}, {orderDetails.recipientInfo.province} {orderDetails.recipientInfo.postalCode}</Typography>
+                                <Typography>Email: {orderDetails.recipientInfo.email}</Typography>
+                                <Typography>Phone Number: {orderDetails.recipientInfo.phoneNumber}</Typography>
+                            </Box>
+
+                            <Box mt={2}>
+                                <Typography variant="h6">Package Information</Typography>
+                                <Typography>Dimensions: {orderDetails.packageInfo.height} cm
+                                    x {orderDetails.packageInfo.width} cm
+                                    x {orderDetails.packageInfo.length} cm</Typography>
+                                <Typography>Weight: {orderDetails.packageInfo.weight}</Typography>
+                            </Box>
+                        </>
+                    )}
+                </Paper>
+            </Box>
+        </Container>
     );
 }
 

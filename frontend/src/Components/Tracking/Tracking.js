@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TextField, Button, Container, Typography, Box } from "@mui/material";
 
 function Tracking() {
     const [orderId, setOrderId] = useState("");
@@ -29,21 +30,41 @@ function Tracking() {
     };
 
     return (
-        <div className="tracking-container">
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    id="tracking"
-                    name="tracking"
-                    placeholder="Enter Order ID"
-                    value={orderId}
-                    onChange={handleChange}
-                />
-                <button type="submit">Track Order</button>
-            </form>
-            {trackingStatus && <p>Status: {trackingStatus}</p>}
-            {error && <p>Error: {error}</p>}
-        </div>
+        <Container className="tracking-container">
+            <Box my={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography variant="h4" gutterBottom>
+                    Track Your Order
+                </Typography>
+                <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+                    <TextField
+                        label="Enter Order ID"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        value={orderId}
+                        onChange={handleChange}
+                    />
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                    >
+                        Track Order
+                    </Button>
+                </form>
+                {trackingStatus && (
+                    <Typography variant="subtitle1" style={{ marginTop: '20px' }}>
+                        Status: {trackingStatus}
+                    </Typography>
+                )}
+                {error && (
+                    <Typography color="error" style={{ marginTop: '20px' }}>
+                        Error: {error}
+                    </Typography>
+                )}
+            </Box>
+        </Container>
     );
 }
 

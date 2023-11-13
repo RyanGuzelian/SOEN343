@@ -10,10 +10,12 @@ import ReceiverForm from "../ReceiverForm/ReceiverForm";
 import Order from "../Order/Order";
 import Tracking from "../Tracking/Tracking";
 import React from "react";
+import Navbar from "../Navbar";
 
 function App() {
     return (
         <Router>
+            <Navbar/>
             <div className="App">
                 <Routes> {/* Use Routes instead of Switch */}
                     <Route path="/sender-info" element={

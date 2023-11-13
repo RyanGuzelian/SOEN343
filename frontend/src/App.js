@@ -16,8 +16,8 @@ import Tracking from "./Components/Tracking/Tracking";
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Router>
+          <Navbar/>
             <div className="App">
                 <Routes> {/* Use Routes instead of Switch */}
                     {/* <Route path="/track" element={
@@ -25,7 +25,6 @@ function App() {
                             <Login/>
                         </header>
                     } /> */}
-
                     <Route path="/ship" element={
                         <header className="App-header">
                             <SenderForm/>
@@ -81,8 +80,8 @@ function App() {
                 </Routes>
 
             </div>
+          <Footer/>
         </Router>
-        <Footer/>
     </div>
   );
 }

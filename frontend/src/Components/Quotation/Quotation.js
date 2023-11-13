@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Card from '../Card/Card';
+import {
+    Card,
+    CardContent,
+    CardActionArea,
+    Typography,
+    Button,
+    Container,
+    Grid,
+    Box
+} from "@mui/material";
 
 function QuotationService() {
     const [quotation, setQuotation] = useState({
@@ -69,27 +78,57 @@ function QuotationService() {
 
 
     return (
-        <div className="quotation-service-container">
-            <form onSubmit={handleSubmit}>
-                <div className="card-container">
-                    <Card
-                        title="Regular Delivery"
-                        imageUrl="" // Add your image URL here
-                        body="Regular delivery in 3 to 7 business days"
-                        price={quotation.regularPrice}
-                        onClick={() => handleCardSelect('regular')}
-                    />
-                    <Card
-                        title="Express Delivery"
-                        imageUrl="" // Add your image URL here
-                        body="Express delivery in 1-2 business days"
-                        price={quotation.expressPrice}
-                        onClick={() => handleCardSelect('express')}
-                    />
-                </div>
-                <button type="submit" disabled={!quotation.selectedType}>Proceed to Payment</button>
-            </form>
-        </div>
+        <Container className="quotation-service-container">
+            <Box my={4}> {/* Add some margin around */}
+                <Grid container spacing={3}> {/* Create a grid layout */}
+                    <Grid item xs={12} sm={6}>
+                        <Card variant="outlined">
+                            <CardActionArea onClick={() => handleCardSelect("regular")}>
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        Regular Delivery
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Regular delivery in 3 to 7 business days
+                                    </Typography>
+                                    <Typography variant="h6" color="primary" component="p">
+                                        ${quotation.regularPrice}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Card variant="outlined">
+                            <CardActionArea onClick={() => handleCardSelect("express")}>
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                        Express Delivery
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Express delivery in 1-2 business days
+                                    </Typography>
+                                    <Typography variant="h6" color="primary" component="p">
+                                        ${quotation.expressPrice}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                </Grid>
+                <Box mt={2}> {/* Add margin on top */}
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        disabled={!quotation.selectedType}
+                        onClick={handleSubmit}
+                    >
+                        Proceed to Payment
+                    </Button>
+                </Box>
+            </Box>
+        </Container>
     );
 }
 
