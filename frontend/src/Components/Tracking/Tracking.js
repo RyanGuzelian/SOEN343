@@ -54,7 +54,7 @@ function Tracking() {
                     </Button>
                 </form>
                 {trackingStatus && (
-                    <Typography variant="subtitle1" style={{ marginTop: '20px' }}>
+                    <Typography color="#81c784" variant="subtitle1" style={{ marginTop: '20px' }}>
                         Status: {trackingStatus}
                     </Typography>
                 )}

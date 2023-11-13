@@ -79,11 +79,11 @@ function QuotationService() {
 
     return (
         <Container className="quotation-service-container">
-            <Box my={4}> {/* Add some margin around */}
-                <Grid container spacing={3}> {/* Create a grid layout */}
+            <Box my={4}>
+                <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <Card variant="outlined">
-                            <CardActionArea onClick={() => handleCardSelect("regular")}>
+                            <CardActionArea onClick={() => handleCardSelect('regular')}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         Regular Delivery
@@ -100,7 +100,7 @@ function QuotationService() {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Card variant="outlined">
-                            <CardActionArea onClick={() => handleCardSelect("express")}>
+                            <CardActionArea onClick={() => handleCardSelect('express')}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         Express Delivery
@@ -116,7 +116,7 @@ function QuotationService() {
                         </Card>
                     </Grid>
                 </Grid>
-                <Box mt={2}> {/* Add margin on top */}
+                <Box mt={2}>
                     <Button
                         variant="contained"
                         color="primary"
