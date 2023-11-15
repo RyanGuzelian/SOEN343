@@ -33,8 +33,8 @@ function UserInfo({userInfo, setUserInfo, handleSubmit, title}) {
     };
 
     return (
-        <div className="user-info-container">
-            <Card className="user-info-form">
+        <div className="user-info-container" >
+            <Card className="user-info-form"  style={{backgroundColor:'#b5d9f5', border:'none', boxShadow:'none'}}>
                 <CardContent>
                     <Typography variant="h5" gutterBottom>
                         {title}

@@ -15,7 +15,7 @@ import Tracking from "./Components/Tracking/Tracking";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: '#87C4FF' }}>
       <Router>
           <Navbar/>
             <div className="App">
