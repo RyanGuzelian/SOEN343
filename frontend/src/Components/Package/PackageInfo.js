@@ -13,7 +13,7 @@ function PackageInfo({packageInfo, setPackageInfo, handleSubmit, title}) {
 
     return (
         <div className="package-info-container">
-            <Card>
+            <Card style={{backgroundColor:'#b5d9f5', border:'none', boxShadow:'none'}}>
                 <CardContent>
                     <Typography variant="h5" gutterBottom>
                         {title}
