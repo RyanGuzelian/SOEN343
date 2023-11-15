@@ -46,7 +46,15 @@ const deliverySchema = new mongoose.Schema({
 
     trackingInfo: {
         state: String
-    }
+    },
+    
+    inquiryInfo: {
+        firstName: String,
+        lastName: String,
+        email: String,
+        phoneNumber: String,
+        inquiryText: String,
+    },
 });
 
 
