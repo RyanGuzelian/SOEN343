@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import './Components/Navbar'
-import Navbar from './Components/Navbar';
+import logo from "./logo.svg";
+import "./App.css";
+import "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import SenderForm from "./Components/SenderForm/SenderForm";
@@ -12,76 +12,99 @@ import Footer from "./Components/Footer/Footer";
 import React from "react";
 import Order from "./Components/Order/Order";
 import Tracking from "./Components/Tracking/Tracking";
+import Contact from "./Components/Contact/Contact";
 
 function App() {
   return (
-    <div className="App" style={{ backgroundColor: '#87C4FF' }}>
+    <div className="App" style={{ backgroundColor: "#87C4FF" }}>
       <Router>
-          <Navbar/>
-            <div className="App">
-                <Routes> {/* Use Routes instead of Switch */}
-                    {/* <Route path="/track" element={
+        <Navbar />
+        <div className="App">
+          <Routes>
+            {" "}
+            {/* Use Routes instead of Switch */}
+            {/* <Route path="/track" element={
                         <header className="App-header">
                             <Login/>
                         </header>
                     } /> */}
-                    <Route path="/ship" element={
-                        <header className="App-header">
-                            <SenderForm/>
-                        </header>
-                    } />
-
-                    <Route path="/sender-info" element={
-                        <header className="App-header">
-                            <SenderForm/>
-                        </header>
-                    } />
-
-                    <Route path="/recipient-info" element={
-                        <header className="App-header">
-                            <ReceiverForm/>
-                        </header>
-                    } />
-
-                    <Route path="/package-info" element={
-                        <header className="App-header">
-                            <PackageForm/>
-                        </header>
-                    } />
-
-                    <Route path="/quotation-service" element={
-                        <header className="App-header">
-                            <Quotation/>
-                        </header>
-                    } />
-
-                    <Route path="/order" element={
-                        <header className="App-header">
-                            <Order/>
-                        </header>
-                    } />
-
-                    <Route path="/track" element={
-                        <header className="App-header">
-                            <Tracking/>
-                        </header>
-                    } />
-
-
-
-
-
-                    {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
-                    <Route path="*" element={
-                        <header className="App-header">
-                                <Home/>
-                        </header>
-                    } />
-                </Routes>
-
-            </div>
-          <Footer/>
-        </Router>
+            <Route
+              path="/ship"
+              element={
+                <header className="App-header">
+                  <SenderForm />
+                </header>
+              }
+            />
+            <Route
+              path="/sender-info"
+              element={
+                <header className="App-header">
+                  <SenderForm />
+                </header>
+              }
+            />
+            <Route
+              path="/recipient-info"
+              element={
+                <header className="App-header">
+                  <ReceiverForm />
+                </header>
+              }
+            />
+            <Route
+              path="/package-info"
+              element={
+                <header className="App-header">
+                  <PackageForm />
+                </header>
+              }
+            />
+            <Route
+              path="/quotation-service"
+              element={
+                <header className="App-header">
+                  <Quotation />
+                </header>
+              }
+            />
+            <Route
+              path="/order"
+              element={
+                <header className="App-header">
+                  <Order />
+                </header>
+              }
+            />
+            <Route
+              path="/track"
+              element={
+                <header className="App-header">
+                  <Tracking />
+                </header>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <header className="App-header">
+                  <Contact />
+                </header>
+              }
+            />
+            {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
+            <Route
+              path="*"
+              element={
+                <header className="App-header">
+                  <Home />
+                </header>
+              }
+            />
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
     </div>
   );
 }
