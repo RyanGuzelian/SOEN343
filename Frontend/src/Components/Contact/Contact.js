@@ -110,7 +110,6 @@ function Contact() {
               multiline
               rows={10}
               fullWidth
-              defaultValue=''
             />
 
             <Button
