@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getQuotation } = require('./Services/QuotationService');
-const Delivery = require('../../database/src/model');
+const Delivery = require('../../Database/src/Model');
 
 router.post('/quotation-service', async (req, res) => {
     try {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Delivery = require('../../database/src/model');
+const Delivery = require('../../Database/src/Model');
 
 // Fetch order details
 router.get('/order-details/:orderId', async (req, res) => {

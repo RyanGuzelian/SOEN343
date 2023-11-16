@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Delivery = require('../../database/src/model');
+const Delivery = require('../../Database/src/Model');
 
 router.post('/recipient-info', async (req, res) => {
     const { orderId, recipientInfo } = req.body;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Delivery = require('../../database/src/model');
+const Delivery = require('../../Database/src/Model');
 
 // Handle submission of customer inquiries
 router.post('/submit-inquiry', async (req, res) => {

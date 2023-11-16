@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-require('../database/src/model');
-const connectToDatabase = require('../database/src/connect');
+require('../Database/src/Model');
+const connectToDatabase = require('../Database/src/Connect');
 const sender = require('./src/SenderController');
 const recipient = require('./src/RecipientController');
 const packageModule = require('./src/PackageController');
