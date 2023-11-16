@@ -1,29 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-const Delivery = require('../database/src/model'); // Ensure this path is correct
-const connectToDatabase = require('../database/src/connect'); // Ensure this function correctly establishes a DB connection
+const Delivery = require('../database/src/model');
+const connectToDatabase = require('../database/src/connect');
 const { getCountriesAndProvinces } = require('./src/UserInfo');
-const {getQuotation} = require("./src/QuotationService"); // Ensure this function is implemented correctly
-
+const {getQuotation} = require("./src/QuotationService");
+const sender = require('./src/Sender');
 const app = express();
 const port = 3001;
 
-connectToDatabase(); // Ensure this is working as expected
+connectToDatabase();
 
 app.use(cors());
 app.use(express.json());
 
-app.post('/sender-info', async (req, res) => {
-    try {
-        const deliveryData = new Delivery({ senderInfo: req.body.senderInfo });
-        await deliveryData.save();
-        res.status(201).json({ message: "Sender data submitted successfully", orderId: deliveryData._id });
-    } catch (err) {
-        console.error("Error saving sender data:", err);
-        res.status(500).send({ message: "Error saving sender data" });
-    }
-});
-
+app.use(sender)
 app.post('/recipient-info', async (req, res) => {
     const { orderId, recipientInfo } = req.body;
     try {
