@@ -12,12 +12,14 @@ import React from "react";
 import Order from "../Order/Order";
 import Tracking from "../Tracking/Tracking";
 import Contact from "../Contact/Contact";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
     return (
-        <div className="App" style={{backgroundColor: "#87C4FF"}}>
+        <div className="App" style={{backgroundColor: "#110B11"}}>
             <Router>
                 <Navbar/>
+                
                 <div className="App">
                     <Routes>
                         {" "}
@@ -96,7 +98,8 @@ function App() {
                             path="*"
                             element={
                                 <header className="App-header">
-                                    <Home/>
+                                    <ChakraProvider><Home/></ChakraProvider>
+                                    
                                 </header>
                             }
                         />
