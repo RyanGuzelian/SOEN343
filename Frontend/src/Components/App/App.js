@@ -16,7 +16,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
     return (
-        <div className="App" style={{backgroundColor: "#110B11"}}>
+        <div className="App" style={{backgroundColor: "#E7DAF7"}}>
             <Router>
                 <Navbar/>
                 
@@ -89,7 +89,7 @@ function App() {
                             path="/contact"
                             element={
                                 <header className="App-header">
-                                    <Contact/>
+                                    <ChakraProvider><Contact/></ChakraProvider>
                                 </header>
                             }
                         />

@@ -1,145 +1,146 @@
-import React, { useState } from "react";
+'use client'
+
 import {
-  Card,
-  CardContent,
+  Container,
+  Flex,
+  Box,
+  Heading,
+  Text,
+  IconButton,
+  Button,
+  VStack,
+  HStack,
+  Wrap,
+  WrapItem,
   FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
-import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+  FormLabel,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Textarea,
+} from '@chakra-ui/react'
+import {
+  MdPhone,
+  MdEmail,
+  MdLocationOn,
+  MdFacebook,
+  MdOutlineEmail,
+} from 'react-icons/md'
+import { BsPerson } from 'react-icons/bs'
 
-function Contact() {
-  const [inquiryInfo, setInquiryInfo] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    inquiryText: "",
-  });
-  const title = "Contact Us";
-
-  const navigate = useNavigate();
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setInquiryInfo((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const result = await sendInquiryInfo(inquiryInfo);
-      console.log(result.message);
-      // If you get an inquiryId or similar identifier, store it as needed
-      navigate("/success-page", { state: { inquiryId: result.inquiryId } });
-    } catch (error) {
-      console.error("Failed to submit inquiry info", error);
-    }
-  };
-
+export default function Contact() {
   return (
-    <div className="inquiry-info-container">
-      <Card
-        className="inquiry-info-form"
-        style={{
-          backgroundColor: "#b5d9f5",
-          border: "none",
-          boxShadow: "none",
-        }}
-      >
-        <CardContent>
-          <Typography variant="h5" gutterBottom>
-            {title}
-          </Typography>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              label="First Name"
-              type="text"
-              name="firstName"
-              value={inquiryInfo.firstName}
-              onChange={handleChange}
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Last Name"
-              type="text"
-              name="lastName"
-              value={inquiryInfo.lastName}
-              onChange={handleChange}
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-
-            <TextField
-              label="Phone Number"
-              type="tel"
-              name="phoneNumber"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              value={inquiryInfo.phoneNumber}
-              onChange={handleChange}
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Email"
-              type="email"
-              name="email"
-              value={inquiryInfo.email}
-              onChange={handleChange}
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              id="inquiryText"
-              label="Tell us about your experience"
-              name="inquiryText"
-              value={inquiryInfo.inquiryText}
-              onChange={handleChange}
-              multiline
-              rows={10}
-              fullWidth
-            />
-
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              sx={{ marginTop: 2 }}
-            >
-              Continue
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
-  );
+    <Container bg="#E7DAF7" maxW="full" mt={0} centerContent overflow="hidden">
+      <Flex>
+        <Box
+          bg="#AD86DD"
+          color="white"
+          borderRadius="lg"
+          m={{ sm: 4, md: 16, lg: 10 }}
+          p={{ sm: 5, md: 5, lg: 16 }}>
+          <Box p={4}>
+            <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
+              <WrapItem>
+                <Box>
+                  <Heading>Contact</Heading>
+                  <Text mt={{ sm: 3, md: 3, lg: 5 }}>
+                    Fill up the form below to contact
+                  </Text>
+                  <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
+                    <VStack pl={0} spacing={3} alignItems="flex-start">
+                      <Button
+                        size="md"
+                        height="48px"
+                        width="200px"
+                        variant="ghost"
+                        color="#DCE2FF"
+                        _hover={{ border: '2px solid #52228D' }}
+                        leftIcon={<MdPhone color="#5F2AA0" size="20px" />}>
+                        +514-123-2345
+                      </Button>
+                      <Button
+                        size="md"
+                        height="48px"
+                        width="200px"
+                        variant="ghost"
+                        color="#DCE2FF"
+                        _hover={{ border: '2px solid #52228D' }}
+                        leftIcon={<MdEmail color="#5F2AA0" size="20px" />}>
+                        delivery@co.ca
+                      </Button>
+                      <Button
+                        size="md"
+                        height="48px"
+                        width="200px"
+                        variant="ghost"
+                        color="#DCE2FF"
+                        _hover={{ border: '2px solid #52228D' }}
+                        leftIcon={<MdLocationOn color="#5F2AA0" size="20px" />}>
+                        Rosemere, QC
+                      </Button>
+                    </VStack>
+                  </Box>
+                  <HStack
+                    mt={{ lg: 10, md: 10 }}
+                    spacing={5}
+                    px={5}
+                    alignItems="flex-start">
+                    <IconButton
+                      aria-label="facebook"
+                      variant="ghost"
+                      size="lg"
+                      isRound={true}
+                      _hover={{ bg: '#9562D2' }}
+                      icon={<MdFacebook size="28px" />}
+                    />
+                  </HStack>
+                </Box>
+              </WrapItem>
+              <WrapItem>
+                <Box bg="#F6EEFF" borderRadius="lg">
+                  <Box m={8} color="#0B0E3F">
+                    <VStack spacing={5}>
+                      <FormControl id="name">
+                        <FormLabel>Your Name</FormLabel>
+                        <InputGroup borderColor="#E0E1E7">
+                          <InputLeftElement pointerEvents="none">
+                            <BsPerson color="gray.800" />
+                          </InputLeftElement>
+                          <Input type="text" size="md" />
+                        </InputGroup>
+                      </FormControl>
+                      <FormControl id="name">
+                        <FormLabel>Mail</FormLabel>
+                        <InputGroup borderColor="#E0E1E7">
+                          <InputLeftElement pointerEvents="none">
+                            <MdOutlineEmail color="gray.800" />
+                          </InputLeftElement>
+                          <Input type="text" size="md" />
+                        </InputGroup>
+                      </FormControl>
+                      <FormControl id="name">
+                        <FormLabel>Message</FormLabel>
+                        <Textarea
+                          borderColor="gray.300"
+                          _hover={{
+                            borderRadius: 'gray.300',
+                          }}
+                          placeholder="Message"
+                        />
+                      </FormControl>
+                      <FormControl id="name" float="right">
+                        <Button variant="solid" bg="#854BCB" color="white" _hover={{}}>
+                          Send Message
+                        </Button>
+                      </FormControl>
+                    </VStack>
+                  </Box>
+                </Box>
+              </WrapItem>
+            </Wrap>
+          </Box>
+        </Box>
+      </Flex>
+    </Container>
+  )
 }
-
-const sendInquiryInfo = async (inquiryInfo) => {
-  const response = await fetch("http://localhost:3001/submit-inquiry", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ inquiryInfo }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return await response.json();
-};
-
-export default Contact;

@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CssBaseline />
-      <AppBar position="static" color="info">
+      <AppBar position="static" sx={{ backgroundColor: "#0a040a" }}>
         <Toolbar>
           <IconButton
             color="inherit"

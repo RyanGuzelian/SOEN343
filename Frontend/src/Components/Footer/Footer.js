@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 
 const Footer = () => {
     return (
-        <Box component="footer" sx={{ bgcolor: 'primary.dark', color: 'white', py: 3 }}>
+        <Box component="footer" sx={{ bgcolor: '#0a040a', color: 'white', py: 3 }}>
             <Container maxWidth="lg">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={4}>

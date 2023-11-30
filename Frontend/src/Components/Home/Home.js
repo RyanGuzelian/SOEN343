@@ -39,13 +39,13 @@ export default function Home() {
                 position: 'absolute',
                 bottom: 1,
                 left: 0,
-                bg: 'red.400',
+                bg: '#854BCB',
                 zIndex: -1,
               }}>
               Write once,
             </Text>
             <br />
-            <Text as={'span'} color={'red.400'}>
+            <Text as={'span'} color={'#854BCB'}>
               use everywhere!
             </Text>
           </Heading>
@@ -61,7 +61,7 @@ export default function Home() {
               fontWeight={'normal'}
               px={6}
               colorScheme={'red'}
-              bg={'red.400'}
+              bg={'#854BCB'}
               _hover={{ bg: 'red.500' }}>
               Get started
             </Button>
@@ -97,27 +97,17 @@ export default function Home() {
             boxShadow={'2xl'}
             width={'full'}
             overflow={'hidden'}>
-            <IconButton
-              aria-label={'Play Button'}
-              variant={'ghost'}
-              _hover={{ bg: 'transparent' }}
-              icon={<PlayIcon w={12} h={12} />}
-              size={'lg'}
-              color={'white'}
-              position={'absolute'}
-              left={'50%'}
-              top={'50%'}
-              transform={'translateX(-50%) translateY(-50%)'}
-            />
+           
             <Image
               alt={'Hero Image'}
               fit={'cover'}
               align={'center'}
               w={'100%'}
               h={'100%'}
-              src={
-                'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
-              }
+              src={'https://plus.unsplash.com/premium_photo-1682090260563-191f8160ca48?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}
+              // src={
+              //   'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+              // }
             />
           </Box>
         </Flex>
