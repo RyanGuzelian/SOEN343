@@ -70,7 +70,7 @@ function QuotationService() {
             console.log("Quotation Info Submission Result:", result);
 
             console.log("Navigating to /order with state:", { orderId, price: quotation.selectedPrice });
-            navigate('/order', { state: { orderId, price: quotation.selectedPrice } });
+            navigate('/payment', { state: { orderId, price: quotation.selectedPrice } });
         } catch (error) {
             console.error("Failed to submit quotation info", error);
         }
