@@ -13,6 +13,7 @@ import Order from "../Order/Order";
 import Tracking from "../Tracking/Tracking";
 import Contact from "../Contact/Contact";
 import { ChakraProvider } from "@chakra-ui/react";
+import Payment from "../Payment/Payment";
 
 function App() {
     return (
@@ -69,6 +70,16 @@ function App() {
                                 </header>
                             }
                         />
+
+                        <Route
+                            path="/payment"
+                            element={
+                                <header className="App-header">
+                                    <ChakraProvider><Payment/></ChakraProvider>
+                                </header>
+                            }
+                        />
+
                         <Route
                             path="/order"
                             element={

@@ -36,7 +36,15 @@ const deliverySchema = new mongoose.Schema({
     },
 
     paymentInfo: {
-
+        firstName: String,
+        lastName:String,
+        address: String,
+        email: String,
+        phoneNumber:String,
+        paymentMethod:String,
+        nameOnCard:String,
+        expiration:String,
+        cvv:String
     },
 
     deliveryInfo: {
