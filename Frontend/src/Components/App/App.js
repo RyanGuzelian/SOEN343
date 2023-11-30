@@ -14,6 +14,7 @@ import Tracking from "../Tracking/Tracking";
 import Contact from "../Contact/Contact";
 import { ChakraProvider } from "@chakra-ui/react";
 import Payment from "../Payment/Payment";
+import ReviewOfService from "../ReviewOfOrder/ReviewOfService";
 
 function App() {
     return (
@@ -104,6 +105,16 @@ function App() {
                                 </header>
                             }
                         />
+
+                        <Route
+                            path="/review"
+                            element={
+                                <header className="App-header">
+                                    <ChakraProvider><ReviewOfService/></ChakraProvider>
+                                </header>
+                            }
+                        />
+
                         {/* The default path should be at the bottom and use "*" for catching all non-defined routes */}
                         <Route
                             path="*"
