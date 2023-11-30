@@ -11,6 +11,7 @@ const tracking = require('./src/TrackingController');
 const customerSupport = require('./src/CustomerSupportController');
 const utility = require('./src/UtilityController');
 const payment =  require('./src/PaymentController')
+const review =  require('./src/ReviewOfServiceController')
 const app = express();
 const port = 3001;
 
@@ -29,6 +30,7 @@ app.use(tracking);
 app.use(customerSupport);
 app.use(utility);
 app.use(payment)
+app.use(review)
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });

@@ -63,6 +63,11 @@ const deliverySchema = new mongoose.Schema({
         phoneNumber: String,
         inquiryText: String,
     },
+
+    reviewInfo: {
+        text: String,
+        rating: Number,
+    }
 });
 
 
