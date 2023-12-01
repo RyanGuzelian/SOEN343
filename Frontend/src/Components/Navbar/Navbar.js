@@ -36,7 +36,7 @@ const Navbar = () => {
       onKeyDown={handleDrawerToggle}
     >
       <List>
-        {["Track", "Ship", "Contact Us", "Review"].map((text) => (
+        {["Track", "Ship", "Contact Us", "Review", "Flexible Delivery" ].map((text) => (
           <ListItem
             button
             key={text}
@@ -48,7 +48,10 @@ const Navbar = () => {
                   ? "/ship"
                   : text === "Contact Us"
                   ? "/contact"
-                  : "/review"
+                  : text === "Review"
+                  ? "/review"
+                  : "/delivery"
+
 
               )
             }
@@ -88,6 +91,9 @@ const Navbar = () => {
               </Button>
               <Button color="inherit" href="/review">
                 Review
+              </Button>
+              <Button color="inherit" href="/delivery">
+                Flexible Delivery
               </Button>
             </>
           )}
