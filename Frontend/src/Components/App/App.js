@@ -15,6 +15,7 @@ import Contact from "../Contact/Contact";
 import { ChakraProvider } from "@chakra-ui/react";
 import Payment from "../Payment/Payment";
 import ReviewOfService from "../ReviewOfOrder/ReviewOfService";
+import DeliveryInfo from "../DeliveryInfo/DeliveryInfo";
 
 function App() {
     return (
@@ -111,6 +112,15 @@ function App() {
                             element={
                                 <header className="App-header">
                                     <ChakraProvider><ReviewOfService/></ChakraProvider>
+                                </header>
+                            }
+                        />
+
+                        <Route
+                            path="/delivery"
+                            element={
+                                <header className="App-header">
+                                    <ChakraProvider><DeliveryInfo/></ChakraProvider>
                                 </header>
                             }
                         />
