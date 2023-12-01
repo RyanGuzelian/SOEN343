@@ -11,6 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import { Link } from "react-router-dom";
 import { CssBaseline, useMediaQuery, useTheme } from "@mui/material";
 
 const Navbar = () => {
@@ -98,13 +99,18 @@ const Navbar = () => {
             </>
           )}
 
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, textAlign: "right" }}
+          <Button
+              color="inherit"
+              sx={{
+                marginLeft: "auto",
+              }}
+              variant="h6"
+              component={Link} // Use the Link component here
+              to="/" // Specify the path to which it should navigate
           >
             Delivery Co.
-          </Typography>
+          </Button>
+
         </Toolbar>
       </AppBar>
       <nav>
