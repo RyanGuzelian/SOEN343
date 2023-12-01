@@ -19,9 +19,9 @@ module.exports.getQuotation = function ({height, width, length, weight}, deliver
 
     // Urgency pricing
     if (deliveryType === "normal") {
-        price += 10; // Normal delivery surcharge
+        price += 5; // Normal delivery surcharge
     } else if (deliveryType === "express") {
-        price += 60; // Express delivery surcharge
+        price += 5; // Express delivery surcharge
     }
 
     console.log(price)
