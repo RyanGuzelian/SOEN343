@@ -32,6 +32,7 @@ export default function Home() {
             <Text
               as={'span'}
               position={'relative'}
+              color="black"
               _after={{
                 content: "''",
                 width: 'full',
@@ -42,17 +43,15 @@ export default function Home() {
                 bg: '#854BCB',
                 zIndex: -1,
               }}>
-              Write once,
+              Delivery Dreams,
             </Text>
             <br />
             <Text as={'span'} color={'#854BCB'}>
-              use everywhere!
+              One Package at a Time!
             </Text>
           </Heading>
           <Text color={'gray.500'}>
-            Snippy is a rich coding snippets app that lets you create your own code
-            snippets, categorize them, and even sync them in the cloud so you can use them
-            anywhere. All that is free!
+          At Delivery Co., we take pride in revolutionizing the shipping industry with our unwavering commitment to speed, reliability, and customer satisfaction. As pioneers in the logistics domain, we seamlessly blend cutting-edge technology with a customer-centric approach, ensuring your parcels reach their destination promptly and securely.
           </Text>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
             <Button
@@ -62,16 +61,17 @@ export default function Home() {
               px={6}
               colorScheme={'red'}
               bg={'#854BCB'}
-              _hover={{ bg: 'red.500' }}>
-              Get started
+              _hover={{ bg: 'red.500' }}
+              >
+              <a href="/multi">Send a parcel</a>
             </Button>
             <Button
               rounded={'full'}
               size={'lg'}
               fontWeight={'normal'}
               px={6}
-              leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}>
-              How It Works
+              >
+              <a href="/review">Received a parcel? Leave us a review!</a>
             </Button>
           </Stack>
         </Stack>

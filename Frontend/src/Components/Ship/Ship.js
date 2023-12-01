@@ -40,6 +40,27 @@ const sendSenderInfo = async (senderInfo) => {
     return await response.json();
 }
 
+const sendPackageInfo = async (packageInfo, orderId) => {
+  try {
+      const response = await fetch('http://localhost:3001/package-info', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ packageInfo, orderId })
+      });
+
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
+      }
+
+      return await response.json();
+  } catch (error) {
+      console.error("Error in sending package info:", error);
+      throw error; // Rethrow the error for further handling
+  }
+};
+
 const sendReceiverInfo = async (recipientInfo, orderId) => {
     const response = await fetch('http://localhost:3001/recipient-info', {
         method: 'POST',
@@ -75,7 +96,6 @@ const Form1 = ({ formData, setFormData }) => {
                 [name]: value
             }))
         }
-        console.log(formData)
     }
 
 
@@ -397,7 +417,24 @@ const Form2 = ({formData, setFormData}) => {
       )
 }
 
-const Form3 = () => {
+const Form3 = ({formData, setFormData}) => {
+  const handleChange = (event) => {
+    const {name, value} = event.target;
+    if (name === 'country') {
+        setFormData(prevInfo => (
+            {
+                ...prevInfo,
+                [name]: value
+            }
+        ))
+    } else {
+        setFormData(prevInfo => ({
+            ...prevInfo,
+            [name]: value
+        }))
+    }
+    console.log(formData)
+}
     return (
         <>
           <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%" color="black">
@@ -408,40 +445,41 @@ const Form3 = () => {
               <FormLabel htmlFor="height" fontWeight={'normal'} color="black">
                 Height
               </FormLabel>
-              <Input id="height" placeholder="Height (cm)" color="black"/>
+              <Input id="height" placeholder="Height (cm)" color="black" name="height" onChange={handleChange}/>
             </FormControl>
     
             <FormControl mr="5%">
               <FormLabel htmlFor="width" fontWeight={'normal'} color="black">
               Width
               </FormLabel>
-              <Input id="width" placeholder="Width (cm)" color="black"/>
+              <Input id="width" placeholder="Width (cm)" color="black" name="width" onChange={handleChange}/>
             </FormControl>
             <FormControl>
-              <FormLabel htmlFor="depth" fontWeight={'normal'} color="black">
-                Depth
+              <FormLabel htmlFor="length" fontWeight={'normal'} color="black">
+                Length
               </FormLabel>
-              <Input id="depth" placeholder="Depth (cm)" color="black"/>
+              <Input id="length" placeholder="Length (cm)" color="black" name="length" onChange={handleChange}/>
             </FormControl>
           </Flex>
           <FormControl mt="2%">
             <FormLabel htmlFor="weight" fontWeight={'normal'} color="black">
             Weight
             </FormLabel>
-            <Input id="weight" type="weight" color="black"/>
+            <Input id="weight" placeholder='Weight (g)' color="black" name="weigth" onChange={handleChange}/>
           </FormControl>
           
         </>
       )
 }
 
-const Form4 = () => {
+const Form4 = ({formData, setFormData, orderId}) => {
+  alert(orderId)
     return (
         <>
           <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%" color="black">
-            Package Information
+            Shipping Options
           </Heading>
-          <Quote/>
+          <Quote formData={formData} setFormData={setFormData} orderId={orderId}/>
         </>
       )
 }
@@ -475,6 +513,20 @@ const [receiverInfo, setReceiverInfo] = useState({
     email: ''
 })
 
+const [packageInfo, setPackageInfo] = useState({
+  height:'',
+  width:'',
+  length:'',
+  weight:''
+})
+
+const [quotation, setQuotation] = useState({
+  regularPrice: 10,
+  expressPrice: 32,
+  selectedType: '',
+  selectedPrice: 0
+});
+
   const handleFormSubmit = async () => {
     try {
       if (step === 1) {
@@ -485,7 +537,11 @@ const [receiverInfo, setReceiverInfo] = useState({
       } else if (step === 2) {
         const result = await sendReceiverInfo(receiverInfo, orderId);
         console.log(result.message);
+        alert(orderId)
         // Handle navigation or other logic here if needed
+      } else if (step === 3){
+        const result = await sendPackageInfo(packageInfo, orderId);
+        console.log(result.message)
       }
       // Add more conditions for other steps if needed
     } catch (error) {
@@ -503,7 +559,7 @@ const [receiverInfo, setReceiverInfo] = useState({
         m="10px auto"
         as="form">
         <Progress hasStripe value={progress} mb="5%" mx="5%" isAnimated colorScheme="purple"></Progress>
-        {step === 1 ? <Form1 formData={senderInfo} setFormData={setSenderInfo}/> : step === 2 ? <Form2 formData={receiverInfo} setFormData={setReceiverInfo}/> : step === 3 ? <Form3 /> : <Form4 />}
+        {step === 1 ? <Form1 formData={senderInfo} setFormData={setSenderInfo}/> : step === 2 ? <Form2 formData={receiverInfo} setFormData={setReceiverInfo}/> : step === 3 ? <Form3 formData={packageInfo} setFormData={setPackageInfo}/> : <Form4 formData={quotation} setFormData={setQuotation} orderId={orderId}/>}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>

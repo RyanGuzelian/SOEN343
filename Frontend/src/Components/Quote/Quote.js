@@ -11,8 +11,10 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useToast
 } from '@chakra-ui/react'
 import { FaCheckCircle } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const optionsRegular = [
   { id: 1, desc: 'Standard delivery time' },
@@ -25,12 +27,13 @@ const optionsExpress = [
     { id: 2, desc: 'Quick and timely shipping' },
     { id: 3, desc: 'Expedited delivery choice' },
   ]
-const PackageTier = ({ title, options, typePlan, checked = false }) => {
+const PackageTier = ({ title, options, typePlan, checked = false, onShipItClick }) => {
   const colorTextLight = checked ? 'white' : 'purple.600'
   const bgColorLight = checked ? 'purple.400' : 'gray.300'
 
   const colorTextDark = checked ? 'white' : 'purple.500'
   const bgColorDark = checked ? 'purple.400' : 'gray.300'
+
 
   return (
     <Stack
@@ -58,15 +61,55 @@ const PackageTier = ({ title, options, typePlan, checked = false }) => {
       <Stack>
         <Button
           size="md"
-          color={useColorModeValue(colorTextLight, colorTextDark)}
+          onClick={() => onShipItClick(typePlan)}           color={useColorModeValue(colorTextLight, colorTextDark)}
           bgColor={useColorModeValue(bgColorLight, bgColorDark)}>
-          Get Started
+          Ship It!
         </Button>
       </Stack>
     </Stack>
   )
 }
-const ThreeTierPricingHorizontal = () => {
+const Quote = ({formData, setFormData, orderId}) => {
+  const navigate = useNavigate();
+  const toast = useToast()
+
+  const handleRegularChange = (typePlan) => {
+    // Handle regular shipping change
+    console.log('Regular Shipping Selected', typePlan);
+    // Add your logic here
+    setFormData({
+      ...formData,
+      selectedType: 'regular',
+      selectedPrice: formData.regularPrice,
+    });
+    toast({
+      title: 'Regular shipment request placed.',
+      description: "Your order id is"+orderId+".",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+    navigate("/home");
+  };
+
+  const handleExpressChange = (typePlan) => {
+    // Handle express shipping change
+    console.log('Express Shipping Selected', typePlan);
+    // Add your logic here
+    setFormData({
+      ...formData,
+      selectedType: 'express',
+      selectedPrice: formData.expressPrice,
+    });
+    toast({
+      title: 'Express shipment request placed.',
+      description: "Your order id is"+orderId+".",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+    navigate('/home')
+  };
   return (
     <Box py={6} px={5} width="full">
       <Stack spacing={4} width={'100%'} direction={'column'}>
@@ -102,13 +145,14 @@ const ThreeTierPricingHorizontal = () => {
           </Stack>
         </Stack>
         <Divider />
-        <PackageTier title={'Regular Shipping'} typePlan="$10.00" options={optionsRegular} />
+        <PackageTier title={'Regular Shipping'} typePlan="$10.00" options={optionsRegular} onShipItClick={handleRegularChange}/>
         <Divider />
         <PackageTier
           title={'Express Shipping'}
           checked={true}
           typePlan="$32.00"
           options={optionsExpress}
+          onShipItClick={handleExpressChange}
         />
         <Divider />
       </Stack>
@@ -116,4 +160,4 @@ const ThreeTierPricingHorizontal = () => {
   )
 }
 
-export default ThreeTierPricingHorizontal
+export default Quote

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import { TextField, Button, Container, Typography, Box, createTheme, ThemeProvider } from "@mui/material";
 
 function Tracking() {
     const [orderId, setOrderId] = useState("");
@@ -29,7 +29,19 @@ function Tracking() {
         }
     };
 
+    const theme = createTheme({
+        palette: {
+          primary: {
+            main: "#854BCB",
+          },
+          secondary: {
+            main: '#f44336',
+          },
+        },
+      });
+
     return (
+        <ThemeProvider theme={theme}>
         <Container className="tracking-container">
             <Box my={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Typography variant="h4" gutterBottom>
@@ -65,6 +77,7 @@ function Tracking() {
                 )}
             </Box>
         </Container>
+        </ThemeProvider>
     );
 }
 

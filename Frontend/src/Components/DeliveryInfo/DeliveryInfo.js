@@ -50,9 +50,9 @@ function DeliveryInfo() {
         <ChakraProvider>
             <Box p={4} borderWidth="1px" borderColor="gray.200" borderRadius="lg" shadow="md">
                 <VStack spacing={4} align="stretch">
-                    <Text fontSize="2xl" fontWeight="bold" color="blue.600">Delivery Information</Text>
+                    <Text fontSize="2xl" fontWeight="bold" color="#53238E">Delivery Information</Text>
                     <FormControl isRequired>
-                        <FormLabel htmlFor="orderID">Order ID</FormLabel>
+                        <FormLabel color="black" htmlFor="orderID">Order ID</FormLabel>
                         <Input
                             id="orderID"
                             placeholder="Enter Order ID"
@@ -62,7 +62,7 @@ function DeliveryInfo() {
                         />
                     </FormControl>
                     <FormControl isRequired>
-                        <FormLabel htmlFor="deliveryDate">Delivery Date</FormLabel>
+                        <FormLabel color="black" htmlFor="deliveryDate">Delivery Date</FormLabel>
                         <Input
                             id="deliveryDate"
                             type="date"
@@ -72,7 +72,7 @@ function DeliveryInfo() {
                         />
                     </FormControl>
                     <FormControl isRequired>
-                        <FormLabel htmlFor="deliveryTime">Delivery Time</FormLabel>
+                        <FormLabel color="black" htmlFor="deliveryTime">Delivery Time</FormLabel>
                         <Select
                             id="deliveryTime"
                             placeholder="Select Delivery Time"
@@ -85,7 +85,7 @@ function DeliveryInfo() {
                             <option value="evening">Evening (4:00 PM - 8:00 PM)</option>
                         </Select>
                     </FormControl>
-                    <Button colorScheme="blue" onClick={handleSubmitDeliveryInfo}>
+                    <Button colorScheme="purple" onClick={handleSubmitDeliveryInfo}>
                         Submit Delivery Info
                     </Button>
                     {submitted && (

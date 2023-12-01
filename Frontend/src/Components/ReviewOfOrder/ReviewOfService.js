@@ -71,9 +71,9 @@ function ReviewComponent() {
         <ChakraProvider>
             <Box p={4} borderWidth="1px" borderColor="gray.200" borderRadius="lg" shadow="md">
                 <VStack spacing={4} align="stretch">
-                    <Text fontSize="2xl" fontWeight="bold" color="blue.600">Submit a Review</Text>
+                    <Text fontSize="2xl" fontWeight="bold" color="#53238E">Submit a Review</Text>
                     <FormControl isRequired isInvalid={!!error}>
-                        <FormLabel htmlFor="orderID">Order ID</FormLabel>
+                        <FormLabel color="black" htmlFor="orderID">Order ID</FormLabel>
                         <Input
                             id="orderID"
                             placeholder="Enter Order ID"
@@ -91,7 +91,7 @@ function ReviewComponent() {
                         name="rating"
                     />
                     <FormControl isRequired>
-                        <FormLabel htmlFor="reviewText">Review</FormLabel>
+                        <FormLabel color="black" htmlFor="reviewText">Review</FormLabel>
                         <Textarea
                             id="reviewText"
                             placeholder="Write your review here"
@@ -100,7 +100,7 @@ function ReviewComponent() {
                             onChange={(e) => setReview({ ...review, text: e.target.value })}
                         />
                     </FormControl>
-                    <Button colorScheme="blue" onClick={handleSubmitReview}>
+                    <Button colorScheme="purple" onClick={handleSubmitReview}>
                         Submit Review
                     </Button>
                     {submitted && (

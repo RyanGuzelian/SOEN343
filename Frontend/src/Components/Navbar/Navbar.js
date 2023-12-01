@@ -45,7 +45,7 @@ const Navbar = () => {
                 text === "Track"
                   ? "/track"
                   : text === "Ship"
-                  ? "/ship"
+                  ? "/multi"
                   : text === "Contact Us"
                   ? "/contact"
                   : text === "Review"
@@ -83,7 +83,7 @@ const Navbar = () => {
               <Button color="inherit" href="/track">
                 Track
               </Button>
-              <Button color="inherit" href="/ship">
+              <Button color="inherit" href="/multi">
                 Ship
               </Button>
               <Button color="inherit" href="/contact">
