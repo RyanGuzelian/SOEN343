@@ -43,7 +43,7 @@ export default function Home() {
                 bg: '#854BCB',
                 zIndex: -1,
               }}>
-              Delivery Dreams,
+              Delivering Dreams,
             </Text>
             <br />
             <Text as={'span'} color={'#854BCB'}>

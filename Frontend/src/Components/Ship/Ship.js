@@ -473,7 +473,6 @@ const Form3 = ({formData, setFormData}) => {
 }
 
 const Form4 = ({formData, setFormData, orderId}) => {
-  alert(orderId)
     return (
         <>
           <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%" color="black">
@@ -537,7 +536,6 @@ const [quotation, setQuotation] = useState({
       } else if (step === 2) {
         const result = await sendReceiverInfo(receiverInfo, orderId);
         console.log(result.message);
-        alert(orderId)
         // Handle navigation or other logic here if needed
       } else if (step === 3){
         const result = await sendPackageInfo(packageInfo, orderId);

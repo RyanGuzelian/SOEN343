@@ -42,46 +42,7 @@ function App() {
                                 
                             }
                         />
-                        <Route
-                            path="/ship"
-                            element={
-                                <header className="App-header">
-                                    <SenderForm/>
-                                </header>
-                            }
-                        />
-                        <Route
-                            path="/sender-info"
-                            element={
-                                <header className="App-header">
-                                    <SenderForm/>
-                                </header>
-                            }
-                        />
-                        <Route
-                            path="/recipient-info"
-                            element={
-                                <header className="App-header">
-                                    <ReceiverForm/>
-                                </header>
-                            }
-                        />
-                        <Route
-                            path="/package-info"
-                            element={
-                                <header className="App-header">
-                                    <PackageForm/>
-                                </header>
-                            }
-                        />
-                        <Route
-                            path="/quotation-service"
-                            element={
-                                <header className="App-header">
-                                    <Quotation/>
-                                </header>
-                            }
-                        />
+                        
 
                         <Route
                             path="/payment"

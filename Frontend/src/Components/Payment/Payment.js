@@ -13,6 +13,7 @@ import {
     RadioGroup,
     HStack,
     Button,
+    useToast,
 } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -37,10 +38,11 @@ function Payment() {
     const navigate = useNavigate();
     const location = useLocation();
     const { orderId, price } = location.state || {};
-
+const toast = useToast();
     // Frontend
     const handleSubmit = async (event) => {
         event.preventDefault();
+        
         try {
             const result = await sendPaymentInfo(payment, orderId);
             console.log("Payment Info Submission Result:", result);
@@ -49,7 +51,15 @@ function Payment() {
                 orderId,
                 price: price,
             });
-            navigate("/order", { state: { orderId, price: price } });
+            toast({
+                title: 'Thank you!',
+                description: "Your order has been placed.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+              navigate('/home')
+            // navigate("/order", { state: { orderId, price: price } });
         } catch (error) {
             console.error("Failed to submit payment info", error);
         }

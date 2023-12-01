@@ -89,7 +89,7 @@ const Quote = ({formData, setFormData, orderId}) => {
       duration: 9000,
       isClosable: true,
     })
-    navigate("/home");
+    navigate("/payment");
   };
 
   const handleExpressChange = (typePlan) => {
@@ -103,12 +103,12 @@ const Quote = ({formData, setFormData, orderId}) => {
     });
     toast({
       title: 'Express shipment request placed.',
-      description: "Your order id is"+orderId+".",
+      description: "Your order id is "+orderId+".",
       status: 'success',
       duration: 9000,
       isClosable: true,
     })
-    navigate('/home')
+    navigate('/payment')
   };
   return (
     <Box py={6} px={5} width="full">

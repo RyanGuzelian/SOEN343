@@ -18,6 +18,7 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
+  useToast,
 } from '@chakra-ui/react'
 import {
   MdPhone,
@@ -27,8 +28,23 @@ import {
   MdOutlineEmail,
 } from 'react-icons/md'
 import { BsPerson } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 export default function Contact() {
+
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const handleClick = (typePlan) => {
+    toast({
+      title: 'Thank you!',
+      description: "Your inquiry has been saved",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+    navigate('/home')
+  };
   return (
     <Container bg="white" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
@@ -129,7 +145,7 @@ export default function Contact() {
                         />
                       </FormControl>
                       <FormControl id="name" float="right">
-                        <Button variant="solid" bg="#854BCB" color="white" _hover={{}}>
+                        <Button variant="solid" bg="#854BCB" color="white" onClick={handleClick} _hover={{}}>
                           Send Message
                         </Button>
                       </FormControl>
