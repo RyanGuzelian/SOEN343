@@ -16,6 +16,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Payment from "../Payment/Payment";
 import ReviewOfService from "../ReviewOfOrder/ReviewOfService";
 import DeliveryInfo from "../DeliveryInfo/DeliveryInfo";
+import Multistep from "../Ship/Ship";
 
 function App() {
     return (
@@ -32,6 +33,15 @@ function App() {
                             <Login/>
                         </header>
                     } /> */}
+                        <Route
+                            path="/multi"
+                            element={
+                                <header className="App-header"><ChakraProvider>
+                                    <Multistep/>
+                                </ChakraProvider></header>
+                                
+                            }
+                        />
                         <Route
                             path="/ship"
                             element={
